@@ -2,7 +2,16 @@ import React from "react";
 import "./directory.styles.scss";
 import MenuItem from "../menu-item/menu-item.component";
 
+/* ***Directory Component***
 
+- Directory is a class Component with State
+- The State is an array of objects(images, urls)
+- Renders one MenuItem Componet per object of the State
+- The objects are destructured and spreaded and pass as props of each MenuItem
+
+
+
+*/
 class Directory extends React.Component {
   constructor() {
     super();
@@ -47,8 +56,8 @@ class Directory extends React.Component {
   render() {
     return (
       <div className="directory-menu">
-        {this.state.sections.map(({ title, imageUrl, id, size }) => (
-          <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+        {this.state.sections.map(({ id, ...otherSectionProps }) => (
+          <MenuItem key={id} {...otherSectionProps} />
         ))}
       </div>
     );
